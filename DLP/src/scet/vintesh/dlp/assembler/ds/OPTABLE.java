@@ -62,7 +62,7 @@ public class OPTABLE {
             String oneEntry = tokenizer.nextToken();
             String[] columnsEntry = oneEntry.split("\t");
             if (columnsEntry.length == 3) {
-                insertOptableEntry(columnsEntry[0].trim(), StatementType.valueOf(columnsEntry[1].trim()), columnsEntry[2].trim(), 0);
+                addOptableEntry(columnsEntry[0].trim(), StatementType.valueOf(columnsEntry[1].trim()), columnsEntry[2].trim(), 0);
             } else {
                 // if the last operand is INTEGER then add it as length or else 
                 int length;
@@ -103,7 +103,7 @@ public class OPTABLE {
         this.routinToBeCalled = routineToBeCalled;
     }
 
-    public static boolean insertOptableEntry(String opcode, StatementType typeOfStatement, String machineCode, int length) {
+    public static boolean addOptableEntry(String opcode, StatementType typeOfStatement, String machineCode, int length) {
         OPTABLE optableEntry = new OPTABLE(opcode, typeOfStatement, machineCode, length);
         return instance.add(optableEntry);
     }
@@ -147,6 +147,10 @@ public class OPTABLE {
 
     public int getLength() {
         return length;
+    }
+
+    public String getRoutinToBeCalled() {
+        return routinToBeCalled;
     }
 
     public static ArrayList<OPTABLE> getInstance() {

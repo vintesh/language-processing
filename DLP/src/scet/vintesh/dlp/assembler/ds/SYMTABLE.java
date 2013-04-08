@@ -8,6 +8,7 @@ package scet.vintesh.dlp.assembler.ds;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import scet.vintesh.dlp.assembler.PassOneEntryPoint;
 
 /**
  *
@@ -49,6 +50,16 @@ public class SYMTABLE {
         this.address = locationCounter;
     }
 
+    public static SYMTABLE getEntryByEntryNo(int entryNo) {
+        for (Iterator<SYMTABLE> it = instance.iterator(); it.hasNext();) {
+            SYMTABLE symtable = it.next();
+            if (symtable.getEntryNo() == entryNo) {
+                return symtable;
+            }
+        }
+        throw new IllegalStateException("No Symbol Entry Found in the Symbol Table");
+    }
+
     public static boolean addEntryToSymbolTable(String symbol, int length) {
         // -1 if no address is identified. i.e. Handling of the FORWARD REFERENCE
         return addEntryToSymbolTable(symbol.trim(), -1, length);
@@ -88,6 +99,16 @@ public class SYMTABLE {
 
     }
 
+    public static void assignAddressesToLiterals() {
+        for (Iterator<SYMTABLE> it = instance.iterator(); it.hasNext();) {
+            SYMTABLE entry = it.next();
+            if (!entry.isEntryAddressSet()) {
+                entry.address = PassOneEntryPoint.getLocationCounter();
+                PassOneEntryPoint.setLocationCounter(PassOneEntryPoint.getLocationCounter() + 1);
+            }
+        }
+    }
+
     public static ArrayList<SYMTABLE> getInstance() {
         return instance;
     }
@@ -101,5 +122,13 @@ public class SYMTABLE {
     @Override
     public String toString() {
         return "SYMTAB: " + entryNo + "|" + symbol + "|" + address + "|" + length;
+    }
+
+    private boolean isEntryAddressSet() {
+        if (this.address == -1) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }
