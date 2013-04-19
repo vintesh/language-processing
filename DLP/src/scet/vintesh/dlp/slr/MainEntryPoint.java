@@ -4,7 +4,9 @@
  * Design of Language Processors
  * SCET, Surat
  */
-package scet.vintesh.dlp.assembler;
+package scet.vintesh.dlp.slr;
+
+import scet.vintesh.dlp.slr.ds.SLRTableEntries;
 
 /**
  *
@@ -13,7 +15,6 @@ package scet.vintesh.dlp.assembler;
 public class MainEntryPoint {
 
     public static void main(String[] args) {
-        PassOneEntryPoint.main(null);
-        PassTwoEntryPoint.main(null);
+//        SLRTableEntries.constructTable();
     }
 }

@@ -1,14 +1,14 @@
 /*
  * Implemented as Tutorial of Masters Program 
  * M.E. - Computer Engineering 
- * Digital Language Processing
+ * Design of Language Processors
  * SCET, Surat
  */
 package scet.vintesh.dlp.assembler;
 
 import java.util.StringTokenizer;
 import scet.vintesh.dlp.assembler.ds.SYMTABLE;
-import scet.vintesh.dlp.assembler.util.FileHandler;
+import scet.vintesh.dlp.util.FileHandler;
 
 /**
  *
@@ -16,7 +16,7 @@ import scet.vintesh.dlp.assembler.util.FileHandler;
  */
 public class PassTwoEntryPoint {
 
-    public static final String pathOfOutputFile = "files/OUTPUT_PASS2.txt";
+    public static final String pathOfOutputFile = "files/assembler/OUTPUT_PASS2.txt";
     private static String inputFileContent = new String(FileHandler.readFile(PassOneEntryPoint.pathOfOutputFile));
     private static StringBuffer outputFileContent = new StringBuffer();
 

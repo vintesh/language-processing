@@ -1,7 +1,7 @@
 /*
  * Implemented as Tutorial of Masters Program 
  * M.E. - Computer Engineering 
- * Digital Language Processing
+ * Design of Language Processors
  * SCET, Surat
  */
 package scet.vintesh.dlp.assembler.ds;
@@ -10,7 +10,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.StringTokenizer;
-import scet.vintesh.dlp.assembler.util.FileHandler;
+import scet.vintesh.dlp.util.FileHandler;
 
 /**
  *
@@ -47,7 +47,7 @@ public class OPTABLE {
     private int length = -1;
     private String routinToBeCalled = "-";
     private static ArrayList<OPTABLE> instance;
-    private static final String pathOfOptableFile = "files/OPTABLE.txt";
+    private static final String pathOfOptableFile = "files/assembler/OPTABLE.txt";
 
     /**
      * Creation of the Arraylist of the OPTABLE enctries. It is must that there

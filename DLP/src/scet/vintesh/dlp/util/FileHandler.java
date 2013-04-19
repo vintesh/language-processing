@@ -1,10 +1,10 @@
 /*
  * Implemented as Tutorial of Masters Program 
  * M.E. - Computer Engineering 
- * Digital Language Processing
+ * Design of Language Processors
  * SCET, Surat
  */
-package scet.vintesh.dlp.assembler.util;
+package scet.vintesh.dlp.util;
 
 import java.io.*;
 
