@@ -6,6 +6,8 @@
  */
 package scet.vintesh.dlp.slr;
 
+import java.util.Scanner;
+import scet.vintesh.dlp.slr.ds.ProductionRule;
 import scet.vintesh.dlp.slr.ds.SLRTableEntries;
 
 /**
@@ -14,7 +16,20 @@ import scet.vintesh.dlp.slr.ds.SLRTableEntries;
  */
 public class MainEntryPoint {
 
+    private static Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
-//        SLRTableEntries.constructTable();
+        // Creating Parsing Table
+        SLRTableEntries.constructTable();
+        SLRTableEntries.printSLRTable();
+
+        // Getting the string to check
+        System.out.println("Enter the String: ");
+//        String stringToCheck = scanner.nextLine();
+        String stringToCheck = "i+i";
+
+        // String Parsing
+        boolean isValid = ParsingAlgorithm.parseString(stringToCheck, ProductionRule.getInstance(), SLRTableEntries.getSlrTable());
+        System.out.println("is Valid String: " + isValid);
     }
 }

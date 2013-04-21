@@ -13,7 +13,7 @@ package scet.vintesh.dlp.slr.ds;
 public class CellEntry {
 
     private EntryType entryType;
-    private int number;
+    private int number = -1;
 
     public CellEntry(EntryType entryType, int number) {
         this.entryType = entryType;
@@ -25,17 +25,28 @@ public class CellEntry {
             this.entryType = EntryType.BLANK;
         } else if (str.equalsIgnoreCase("A")) {
             this.entryType = EntryType.ACCEPT;
-        } else if (str.substring(0, str.length() - 1).equalsIgnoreCase("S")) {
-            this.number = Integer.parseInt(String.valueOf(str.charAt(str.length() - 1)));
-            this.entryType = EntryType.SHIFT;
-        } else if (str.substring(0, str.length() - 1).equalsIgnoreCase("R")) {
-            this.number = Integer.parseInt(String.valueOf(str.charAt(str.length() - 1)));
+        } else if (str.matches("[sS].")) {
+            this.number = Integer.parseInt(String.valueOf(str.substring(1)));
+            this.entryType = EntryType.SHIFT_T;
+        } else if (str.matches("[rR].")) {
+            this.number = Integer.parseInt(String.valueOf(str.substring(1)));
             this.entryType = EntryType.REDUCE;
+        } else if (str.matches("[0-9]*")) {
+            this.number = Integer.parseInt(String.valueOf(str.substring(0)));
+            this.entryType = EntryType.SHIFT_NT;
         }
+    }
+
+    public EntryType getEntryType() {
+        return entryType;
+    }
+
+    public int getNumber() {
+        return number;
     }
 
     @Override
     public String toString() {
-        return String.format("%-6s | %-2d |", entryType, number);
+        return String.format("%-10s | %-2d |", entryType, number);
     }
 }

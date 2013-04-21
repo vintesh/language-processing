@@ -12,5 +12,5 @@ package scet.vintesh.dlp.slr.ds;
  */
 public enum EntryType {
 
-    SHIFT, REDUCE, ACCEPT, BLANK
+    SHIFT_T, REDUCE, ACCEPT, BLANK, SHIFT_NT
 }
